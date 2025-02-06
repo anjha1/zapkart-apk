@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Gateway</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .payment-container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            background-color: rgba(206, 192, 174, 0.836);
+            box-shadow: rgb(132, 217, 251) 10px 10px 10px;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .payment-options label {
+            margin-bottom: 5px;
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-details label {
+            margin-bottom: 5px;
+        }
+
+        .card-details input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .price-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #upi-qr {
+            display: none; /* Hide by default */
+            width: 250px;
+            height: 300px;
+            margin: 10px auto;
+        }
+        button{
+          width: 20%;
+          position:relative;
+          height: 30px;
+          border-radius: 10px;
+          align-items: center;
+          align-content: center;
+          background-color: red;
+          margin: 10px;
+        }
+        input{
+            background-color: rgba(254, 255, 255, 0.937);
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Payment</h2><hr>
+        <form id="payment-form">
+            <div class="payment-options">
+                <input type="radio" name="payment-method" id="card" value="card" checked>
+                <label for="card">Card</label>
+                <input type="radio" name="payment-method" id="bank-transfer" value="bank-transfer">
+                <label for="bank-transfer">Bank Transfer</label>
+                <input type="radio" name="payment-method" id="cryptocurrency" value="cryptocurrency">
+                <label for="cryptocurrency">Cryptocurrency</label>
+                <input type="radio" name="payment-method" id="upi" value="upi">
+ <label for="upi">UPI</label>
+            </div>
+            <div class="card-details" id="card-details">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number" style="width: 90%;" required>
+                <label for="expiration-date">Expiration Date</label>
+                <input type="text" id="expiration-date" name="expiration-date" style="width: 90%;" required>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" style="width: 90%;" required><br>
+                    
+            </div>
+            <div>
+              <input type="checkbox" id="save-card" name="save-card">
+                <label for="save-card">Save Card Details</label>
+            </div>
+            <div id="upi-qr" class="upi-qr">
+                <!-- QR code will be displayed here -->
+                <img src="qr.jpg" alt="UPI QR Code" style="height: 300px; width: 200px;">
+            </div>
+            <div class="price-container"><hr>
+                <p>Total Amount: <span id="price">0.00</span> Rs</p>
+                <a href href="https://rahulrathore579.github.io/Zapkart/index.html"><button type="submit">Pay</button></a>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+  // Function to fetch the price from another webpage
+function fetchPrice() {
+    // Replace 'path/to/your/price-page' with the actual path
+    fetch('https://rahulrathore579.github.io/Zapkart/')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('pay').textContent = data.price;
+        })
+        .catch(error => console.error('Error fetching price:', error));
+}
+
+// Call the function to fetch the price initially
+fetchPrice();
+
+// JavaScript to handle payment form submission and other logic
+// Add event listener to show/hide UPI QR code
+document.getElementById('upi').addEventListener('click', () => {
+    document.getElementById('card-details').style.display = 'none';
+    document.getElementById('upi-qr').style.display = 'block';
+});
+
+document.getElementById('card').addEventListener('click', () => {
+    document.getElementById('card-details').style.display = 'block';
+    document.getElementById('upi-qr').style.display = 'none';
+});
+</script>
+</html>

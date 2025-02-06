@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>   
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>   
+</head>
+<body>
+    <script>
+        var options = {{ order_options | tojson }};
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.success', function (response) {
+            // Handle successful payment
+            window.location.href = '/verify';
+        });
+        rzp1.on('payment.failure', function (response) {
+            // Handle payment failure
+            alert('Payment failed!');
+        });
+        rzp1.open();
+    </script>
+</body>
+</html>

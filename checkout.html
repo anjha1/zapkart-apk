@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout Page</title>
+</head>
+<body>
+  <form id="payment-form">
+    <label for="card-element">Card information</label>
+    <div id="card-element"></div>
+    <button id="submit-button">Submit payment</button>
+  </form>
+  <script>
+    // Set up Stripe API credentials
+const stripe = Stripe('rzp_test_RYoXDJYu4yQOpuY');
+
+// Get the payment form element
+const paymentForm = document.getElementById('payment-form');
+
+// Add an event listener to the form
+paymentForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  // Create a new payment method
+  const paymentMethod = await stripe.paymentMethods.create({
+    type: 'card',
+    card: cardElement,
+  });
+
+  // Confirm the payment intent
+  await stripe.paymentIntents.confirm(paymentIntentId, {
+    payment_method: paymentMethod.id,
+  });
+
+  // Redirect the user to a success page
+  window.location.href = '/success';
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Search and Add</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: black;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+            border-radius: 15px;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+            color: white;
+        }
+        th {
+            background-color: black;
+            color: white;
+        }
+        .message {
+            color: green;
+            font-weight: bold;
+        }
+        .left_div, .right_div, .bottom_div {
+            border: 1px solid #0b0b0b;
+            border-radius: 25px;
+            margin: 3px;
+            padding: 10px;
+            width: 90vw;
+            float: left;
+            color: black;
+            background-color: white;
+        }
+        .right_div {
+            overflow-x: hidden; /* Ensures horizontal scrolling is disabled */
+            overflow-y: auto;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="left_div">
+        <h1>Search for an Item</h1>
+        <form method="POST">
+            <input type="text" name="barcode" placeholder="Enter Barcode Number" required>
+            <button type="submit" name="search">Search</button>
+        </form>
+    </div>
+    
+    <div class="right_div">
+        <h1>Add New Item</h1>
+        <form method="POST">
+            <input type="text" name="new_barcode" placeholder="Barcode Number" required>
+            <input type="text" name="new_name" placeholder="Name of Item" required>
+            <input type="number" step="0.01" name="new_price" placeholder="Price of Item" required>
+            <button type="submit" name="add" style="border-radius: 15px; width: 100px; height: 20px;">Add Item</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="bottom_div">
+        <h2>MY CART</h2>
+        <table>
+            <tr>
+                <th>Barcode</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.barcode }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>${{ item.price }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2"><strong>Total Price</strong></td>
+                <td><strong>${{ total_price }}</strong></td>
+            </tr>
+        </table>
+        <div style="margin: 20px; padding: 10px;">
+            <form method="POST" action="/proceed_to_payment">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" style="height: 30px; width: 220px; font-size: 20px; border-radius: 15px;">Proceed to Payment</button>
+            </form>
+            <form method="GET" action="/print_receipt">
+                <button type="submit" style="height: 30px; width: 220px; font-size: 20px; margin-top: 20px; border-radius: 15px;">Print Receipt</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

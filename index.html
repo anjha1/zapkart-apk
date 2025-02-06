@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart mtlb zapkart</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="script.js"></script>
+</head>
+<body>
+    
+    <div class="loader">
+        <div><h2>𝒫𝓁𝑒𝓈𝑒 𝓌𝒶𝒾𝓉..........</h2></div>
+        <div class="spinner"></div><br>
+        <h1>𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓩𝓪𝓹𝓚𝓪𝓻𝓽</h1>
+    </div>
+    <section class="container" style="display: none;">
+        <div class="header">
+            <img src="logo3.png" alt="Your logo" class="logo">
+            <h1>SHOPPING CART mtlb "ZapKart"</h1>
+            <div class="scanner-container">
+                <div class="scanner">
+                    <button onclick="runFlaskApp()" style="margin-top: 10px; background-color: blueviolet; padding-right: 30px; text-align: right; border-radius:30px; float: center; height: 35px; width: 10vw; align-items: center; align-content: center;">
+                        SCAN BARCODE
+                    </button>
+                    <div class="scanner-line">
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <br>
+        </div>
+        <div style="width: 100%; width: 3vh; height: 3vh;">
+            
+        </div>
+    <section class="left-column">
+            <div style="width: 100%; height:5vh">
+                <h2>COKIES </h2>
+            </div>
+        <div class="left-column_in">
+            <button class="add-item-button">Add New Item</button>
+            <div class="cart-item"  >
+                <img src="COKIES\Screenshot 2024-07-19 021354.png" alt="Item 1 Image" height="100px" width="150px">
+                <p class="item-name">Item 1</p>
+                <p class="quantity">Quantity: <span id="totalclick1">0</span></p>
+                <p class="price">Price: <span id="price1">100.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice1">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 1)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 1)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(1)">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <div class="cart-item">
+                <img src="COKIES\Screenshot 2024-07-19 021245.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 2</p>
+                <p class="quantity">Quantity: <span id="totalclick2">0</span></p>
+                <p class="price">Price: <span id="price2">50.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice2">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 2)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 2)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(2)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="COKIES\Screenshot 2024-07-19 021222.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 3</p>
+                <p class="quantity">Quantity: <span id="totalclick3">0</span></p>
+                <p class="price">Price: <span id="price3">150.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice3">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 3)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 3)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(3)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="COKIES\Screenshot 2024-07-19 021104.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 4</p>
+                <p class="quantity">Quantity: <span id="totalclick4">0</span></p>
+                <p class="price">Price: <span id="price4">70.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice4">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 4)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 4)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(4)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="COKIES\Screenshot 2024-07-19 021022.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 5</p>
+                <p class="quantity">Quantity: <span id="totalclick5">0</span></p>
+                <p class="price">Price: <span id="price5">1000.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice5">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 5)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 5)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(5)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="COKIES\Screenshot 2024-07-19 021001.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 6</p>
+                <p class="quantity">Quantity: <span id="totalclick6">0</span></p>
+                <p class="price">Price: <span id="price6">1350.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice6">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 6)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 6)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(6)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item add-item-form" style="display: none;">
+                <input type="file" class="item-image" accept="image/*" required>
+                <input type="text" class="item-name" placeholder="Item Name" required>
+                <input type="number" class="quantity" min="1" value="1" required>
+                <input type="number" class="price" min="1" value="0" required>
+                <div class="actions">
+                  <button class="add-item">Add Item</button>
+                  <button class="cancel-add-item">Cancel</button>
+                </div>
+              </div>
+        </div>
+
+        <div style="width: 100%;">
+            <h2>DRY FRUITS</h2>
+        </div>
+        <div class="left-column_in">
+           <button class="add-item-button">Add New Item</button>
+            <div class="cart-item">
+                <img src="dry\Screenshot 2024-07-19 153242.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 7</p>
+                <p class="quantity">Quantity: <span id="totalclick7">0</span></p>
+                <p class="price">Price: <span id="price7">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice7">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 7)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 7)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(7)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="dry\Screenshot 2024-07-19 153257.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 8</p>
+                <p class="quantity">Quantity: <span id="totalclick8">0</span></p>
+                <p class="price">Price: <span id="price8">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice8">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 8)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 8)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(8)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="dry\Screenshot 2024-07-19 153332.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 9</p>
+                <p class="quantity">Quantity: <span id="totalclick9">0</span></p>
+                <p class="price">Price: <span id="price9">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice9">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 9)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 9)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(9)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="dry\Screenshot 2024-07-19 153349.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 10</p>
+                <p class="quantity">Quantity: <span id="totalclick10">0</span></p>
+                <p class="price">Price: <span id="price10">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice10">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 10)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 10)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(10)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="dry\Screenshot 2024-07-19 153417.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 11</p>
+                <p class="quantity">Quantity: <span id="totalclick11">0</span></p>
+                <p class="price">Price: <span id="price11">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice11">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 11)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 11)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(11)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="dry\Screenshot 2024-07-19 153540.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 12</p>
+                <p class="quantity">Quantity: <span id="totalclick12">0</span></p>
+                <p class="price">Price: <span id="price12">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice12">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 12)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 12)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(12)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item add-item-form" style="display: none;">
+                <input type="file" class="item-image" accept="image/*" required>
+                <input type="text" class="item-name" placeholder="Item Name" required>
+                <input type="number" class="quantity" min="1" value="1" required>
+                <input type="number" class="price" min="1" value="0" required>
+                <div class="actions">
+                  <button class="add-item">Add Item</button>
+                  <button class="cancel-add-item">Cancel</button>
+                </div>
+              </div>
+        </div>
+        
+        <div style="width: 100%;">
+            <h2>Ice Cream</h2>
+        </div>
+        <div class="left-column_in">
+            <button class="add-item-button">Add New Item</button>
+            <div class="cart-item">
+                <img src="ice cream\Screenshot 2024-07-19 154337.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 13</p>
+                <p class="quantity">Quantity: <span id="totalclick13">0</span></p>
+                <p class="price">Price: <span id="price13">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice13">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 13)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 13)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(13)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="ice cream\Screenshot 2024-07-19 154354.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 14</p>
+                <p class="quantity">Quantity: <span id="totalclick14">0</span></p>
+                <p class="price">Price: <span id="price14">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice14">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 14)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 14)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(14)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="ice cream\Screenshot 2024-07-19 154416.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 15</p>
+                <p class="quantity">Quantity: <span id="totalclick15">0</span></p>
+                <p class="price">Price: <span id="price15">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice15">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 15)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 15)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(15)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="ice cream\Screenshot 2024-07-19 154506.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 16</p>
+                <p class="quantity">Quantity: <span id="totalclick16">0</span></p>
+                <p class="price">Price: <span id="price16">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice16">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 16)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 16)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(16)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="ice cream\Screenshot 2024-07-19 154523.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 17</p>
+                <p class="quantity">Quantity: <span id="totalclick17">0</span></p>
+                <p class="price">Price: <span id="price17">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice17">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 17)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 17)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(17)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="ice cream\Screenshot 2024-07-19 154541.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 18</p>
+                <p class="quantity">Quantity: <span id="totalclick18">0</span></p>
+                <p class="price">Price: <span id="price18">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice18">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 18)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 18)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(18)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item add-item-form" style="display: none;">
+                <input type="file" class="item-image" accept="image/*" required>
+                <input type="text" class="item-name" placeholder="Item Name" required>
+                <input type="number" class="quantity" min="1" value="1" required>
+                <input type="number" class="price" min="1" value="0" required>
+                <div class="actions">
+                  <button class="add-item">Add Item</button>
+                  <button class="cancel-add-item">Cancel</button>
+                </div>
+              </div>
+        </div>
+
+        <div style="width: 100%;">
+            <h2>vegetables</h2>
+        </div>
+        <div class="left-column_in">
+            <button class="add-item-button">Add New Item</button>
+            <div class="cart-item">
+                <img src="vegetables\Screenshot 2024-07-19 155333.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 19</p>
+                <p class="quantity">Quantity: <span id="totalclick19">0</span></p>
+                <p class="price">Price: <span id="price19">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice19">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 19)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 19)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(19)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="vegetables\Screenshot 2024-07-19 155354.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 20</p>
+                <p class="quantity">Quantity: <span id="totalclick20">0</span></p>
+                <p class="price">Price: <span id="price20">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice20">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 20)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 20)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(20)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="vegetables\Screenshot 2024-07-19 155416.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 21</p>
+                <p class="quantity">Quantity: <span id="totalclick21">0</span></p>
+                <p class="price">Price: <span id="price21">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice21">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 21)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 21)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(21)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="vegetables\Screenshot 2024-07-19 155432.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 22</p>
+                <p class="quantity">Quantity: <span id="totalclick22">0</span></p>
+                <p class="price">Price: <span id="price22">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice22">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 22)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 22)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(22)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="vegetables\Screenshot 2024-07-19 155507.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 23</p>
+                <p class="quantity">Quantity: <span id="totalclick23">0</span></p>
+                <p class="price">Price: <span id="price23">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice23">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 23)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 23)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(23)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="vegetables\Screenshot 2024-07-19 155714.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 24</p>
+                <p class="quantity">Quantity: <span id="totalclick24">0</span></p>
+                <p class="price">Price: <span id="price24">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice24">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 24)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 24)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(24)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item add-item-form" style="display: none;">
+                <input type="file" class="item-image" accept="image/*" required>
+                <input type="text" class="item-name" placeholder="Item Name" required>
+                <input type="number" class="quantity" min="1" value="1" required>
+                <input type="number" class="price" min="1" value="0" required>
+                <div class="actions">
+                  <button class="add-item">Add Item</button>
+                  <button class="cancel-add-item">Cancel</button>
+                </div>
+              </div>
+        </div>
+
+        <div style="width: 100%;">
+            <h2>cold drink </h2>
+        </div>
+        <div class="left-column_in">
+            <button class="add-item-button">Add New Item</button>
+            <div class="cart-item">
+                <img src="coffie\Screenshot 2024-07-19 155953.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 25</p>
+                <p class="quantity">Quantity: <span id="totalclick25">0</span></p>
+                <p class="price">Price: <span id="price25">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice25">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 25)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 25)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(25)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="coffie\Screenshot 2024-07-19 160009.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 26</p>
+                <p class="quantity">Quantity: <span id="totalclick26">0</span></p>
+                <p class="price">Price: <span id="price26">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice26">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 26)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 26)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(26)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="coffie\Screenshot 2024-07-19 160030.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 27</p>
+                <p class="quantity">Quantity: <span id="totalclick27">0</span></p>
+                <p class="price">Price: <span id="price27">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice27">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 27)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 27)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(27)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="coffie\Screenshot 2024-07-19 160100.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 28</p>
+                <p class="quantity">Quantity: <span id="totalclick28">0</span></p>
+                <p class="price">Price: <span id="price28">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice28">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 28)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 28)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(28)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="coffie\Screenshot 2024-07-19 160146.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 29</p>
+                <p class="quantity">Quantity: <span id="totalclick29">0</span></p>
+                <p class="price">Price: <span id="price29">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice29">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 29)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 29)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(29)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="coffie\Screenshot 2024-07-19 160225.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 30</p>
+                <p class="quantity">Quantity: <span id="totalclick30">0</span></p>
+                <p class="price">Price: <span id="price30">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice30">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 30)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 30)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(30)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item add-item-form" style="display: none;">
+                <input type="file" class="item-image" accept="image/*" required>
+                <input type="text" class="item-name" placeholder="Item Name" required>
+                <input type="number" class="quantity" min="1" value="1" required>
+                <input type="number" class="price" min="1" value="0" required>
+                <div class="actions">
+                  <button class="add-item">Add Item</button>
+                  <button class="cancel-add-item">Cancel</button>
+                </div>
+              </div>
+        </div>
+
+
+        <div style="width: 100%;">
+            <h2>SHOES</h2>
+        </div>
+        <div class="left-column_in">
+            <button class="add-item-button">Add New Item</button>
+            <div class="cart-item">
+                <img src="shoes\Screenshot 2024-07-19 160520.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 31</p>
+                <p class="quantity">Quantity: <span id="totalclick31">0</span></p>
+                <p class="price">Price: <span id="price31">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice31">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 31)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 31)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(31)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="shoes\Screenshot 2024-07-19 160547.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 32</p>
+                <p class="quantity">Quantity: <span id="totalclick32">0</span></p>
+                <p class="price">Price: <span id="price32">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice32">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 32)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 32)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(32)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="shoes\Screenshot 2024-07-19 160609.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 33</p>
+                <p class="quantity">Quantity: <span id="totalclick33">0</span></p>
+                <p class="price">Price: <span id="price33">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice33">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 33)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 33)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(22)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="shoes\Screenshot 2024-07-19 160632.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 34</p>
+                <p class="quantity">Quantity: <span id="totalclick34">0</span></p>
+                <p class="price">Price: <span id="price34">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice34">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 34)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 34)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(34)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="shoes\Screenshot 2024-07-19 160709.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 35</p>
+                <p class="quantity">Quantity: <span id="totalclick35">0</span></p>
+                <p class="price">Price: <span id="price35">1750.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice35">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 35)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 35)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(35)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="shoes\Screenshot 2024-07-19 160725.png" alt="Item 1 Image" height="100px" width="150px" >
+                <p class="item-name">Item 36</p>
+                <p class="quantity">Quantity: <span id="totalclick36">0</span></p>
+                <p class="price">Price: <span id="price36">700.00</span> Rs</p>
+                <p class="total-price">Total Price: <span id="totalprice36">00</span> Rs</p>
+                <div class="actions">
+                    <button class="add-item" onclick="totalclick(1, 36)">ADD ITEM</button>
+                    <button class="remove-item" onclick="totalclick(-1, 36)">REMOVE ITEM</button>
+                    <button class="search" onclick="searchItem(36)">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="cart-item add-item-form" style="display: none;">
+                <input type="file" class="item-image" accept="image/*" required>
+                <input type="text" class="item-name" placeholder="Item Name" required>
+                <input type="number" class="quantity" min="1" value="1" required>
+                <input type="number" class="price" min="1" value="0" required>
+                <div class="actions">
+                  <button class="add-item">Add Item</button>
+                  <button class="cancel-add-item">Cancel</button>
+                </div>
+              </div>
+        </div>
+        </section>
+        
+        <section  class="bot">
+          <div class="right-column">
+            <div class="top-section">
+                My cart
+            </div>
+            <div id="itemDetails" class="bottom-section">
+                <table border="0" id="itemTable">
+                    <thead class="text">
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+         
+        </section>
+        
+        <section class="bot">
+          <div>
+            <div class="actions1">
+                <div class="sp"></div><br>
+                <a href="https://rahulrathore579.github.io/Zapkart/payment.html"><button class="suspend">Payment</button></a>
+                <button class="hold">HOLD</button>
+                <button class="checkout" onclick="printTableData()">CHECKOUT</button>
+                <p>Pay Price: <span id="pay">0.00</span> Rs</p>
+            </div>
+        </div>
+    </section>
+    </section>  
+
+    
+
+
+    <script defer>
+        setTimeout(function() {
+            // Remove loader
+            const loader = document.querySelector('.loader');
+            loader.style.display = 'none';
+
+            // Show the rest of the page
+            const container = document.querySelector('.container');
+            container.style.display = 'block';
+        }, 5000);
+    </script>
+    <script>
+        //==cart item function
+        let payPrice = 0;
+        function totalclick(click, itemNumber) {
+            const totalclick = document.getElementById('totalclick' + itemNumber);
+            const price = document.getElementById('price' + itemNumber);
+            const totalprice = document.getElementById('totalprice' + itemNumber);
+            const sumvalue = parseInt(totalclick.innerText) + click;
+            totalclick.innerText = sumvalue;
+            const tprice = parseInt(price.innerText) * sumvalue;
+            totalprice.innerText = tprice + '';
+
+            // Update pay price
+            payPrice = 0;
+            for (let i = 1; i <= 36; i++) {
+                const totalpriceElement = document.getElementById('totalprice' + i);
+                payPrice += parseInt(totalpriceElement.innerText);
+            }
+            document.getElementById('pay').innerText = payPrice + '';
+        }
+
+        function searchItem(itemNumber) {
+            const totalclickElement = document.getElementById('totalclick' + itemNumber);
+            const totalpriceElement = document.getElementById('totalprice' + itemNumber);
+
+            const itemDetails = {
+                name: "Item " + itemNumber,
+                quantity: parseInt(totalclickElement.innerText),
+                price: totalpriceElement.innerText
+            };
+
+            if (itemDetails) {
+                const itemTableBody = document.getElementById("itemTableBody");
+                const newRow = document.createElement("tr");
+                newRow.setAttribute("id", "row" + itemNumber);
+
+                const nameCell = document.createElement("td");
+                nameCell.textContent = itemDetails.name;
+                const quantityCell = document.createElement("td");
+                quantityCell.textContent = itemDetails.quantity;
+                const priceCell = document.createElement("td");
+                priceCell.textContent = itemDetails.price;
+
+                const actionCell = document.createElement("td");
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "DELETE";
+                deleteButton.onclick = function() {
+                    deleteItem(itemNumber);
+                };
+                actionCell.appendChild(deleteButton);
+
+                newRow.appendChild(nameCell);
+                newRow.appendChild(quantityCell);
+                newRow.appendChild(priceCell);
+                newRow.appendChild(actionCell);
+
+                itemTableBody.appendChild(newRow);
+            } else {
+                alert("Item details not found.");
+            }
+        }
+
+        function deleteItem(itemNumber) {
+            const row = document.getElementById("row" + itemNumber);
+            row.parentNode.removeChild(row);
+        }
+
+         // existing JavaScript code
+
+    // existing JavaScript code
+
+  // Add event listeners for add-item-button and cancel-add-item button for each left-column_in section
+  const addItemButtons = document.querySelectorAll('.add-item-button');
+  const addItemForms = document.querySelectorAll('.add-item-form');
+  const cancelAddItemButtons = document.querySelectorAll('.cancel-add-item');
+
+  addItemButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      addItemForms.forEach(form => form.style.display = 'none');
+      addItemForms[index].style.display = 'block';
+    });
+  });
+
+  cancelAddItemButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      addItemForms.forEach(form => form.style.display = 'none');
+    });
+  });
+
+  const addItemButtonsInForm = document.querySelectorAll('.add-item');
+  addItemButtonsInForm.forEach(button => {
+    button.addEventListener('click', () => {
+      const form = button.closest('.add-item-form');
+      const imageInput = form.querySelector('.item-image');
+      const imageFile = imageInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const itemName = form.querySelector('.item-name').value;
+        const quantity = form.querySelector('.quantity').value;
+        const price = form.querySelector('.price').value;
+
+        // Create new cart-item div
+        const newCartItem = `
+          <div class="cart-item">
+            <img src="${event.target.result}" alt="Item Image" height="100px" width="150px" >
+            <p class="item-name">${itemName}</p>
+            <p class="quantity">Quantity: <span id="totalclick${index}">${quantity}</span></p>
+            <p class="price">Price: <span id="price${index}">${price}.00</span> Rs</p>
+            <p class="total-price">Total Price: <span id="totalprice${index}">${quantity * price}.00</span> Rs</p>
+            <div class="actions">
+              <button class="add-item" onclick="totalclick(1, ${index})">ADD ITEM</button>
+              <button class="remove-item" onclick="totalclick(-1, ${index})">REMOVE ITEM</button>
+              <button class="search" onclick="searchItem(${index})">ADD TO CART</button>
+            </div>
+          </div>
+        `;
+
+        // Add the new cart-item div to the corresponding left-column_in section
+        const leftColumnIn = button.closest('.left-column_in');
+        leftColumnIn.appendChild(newCartItem);
+
+        // Reset the form
+        form.reset();
+        form.style.display = 'none';
+      };
+
+      reader.readAsDataURL(imageFile);
+    });
+  }); 
+    </scrip>
+</body>
+</html>
