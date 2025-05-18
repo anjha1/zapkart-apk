@@ -1,19 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Search and Add</title>
+    <title>Item Search with Barcode Scanner</title>
     <style>
         /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #f5f5f5;
             color: #333;
             display: flex;
             justify-content: center;
@@ -27,13 +24,15 @@
             align-items: center;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             width: 90%;
             max-width: 1200px;
+            background-color: white;
         }
 
         h1, h2 {
             color: #444;
+            text-align: center;
         }
 
         /* Form Styles */
@@ -45,9 +44,9 @@
         }
 
         input[type="text"], input[type="number"], input[type="email"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             font-size: 16px;
             transition: border-color 0.3s ease;
         }
@@ -58,66 +57,28 @@
         }
 
         button {
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 5px;
-            background-color: rgba(87, 157, 233, 0.78);
+            border-radius: 8px;
+            background-color: #579DE9;
             color: white;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         button:hover {
-            background-color: rgb(255, 91, 3);
-            transform: scale(1.05);
+            background-color: #FF5B03;
+            transform: scale(1.02);
         }
 
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-        }
-
-        th {
-            background-color: rgb(255, 0, 0);
-            color: white;
-        }
-
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Message Styles */
-        .message {
-            color: green;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        /* Div Sections */
-        .left_div, .right_div, .bottom_div {
-            width: 100%;
-            padding: 20px;
-            background: rgba(247, 159, 118, 0.37);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .bottom_div {
-            margin-bottom: 0;
+        #scan-button {
+            background-color: #4CAF50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         /* Scanner Styles */
@@ -127,7 +88,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             display: none;
             flex-direction: column;
             align-items: center;
@@ -135,39 +96,92 @@
             z-index: 1000;
         }
 
-        #scanner-video {
-            width: 80%;
+        #scanner-view {
+            position: relative;
+            width: 90%;
             max-width: 500px;
-            border: 3px solid #fff;
+            height: 60vh;
             border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #scanner-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #scanner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #scanner-frame {
+            width: 80%;
+            height: 200px;
+            border: 4px solid #4CAF50;
+            border-radius: 10px;
+            box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #scanner-line {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: #4CAF50;
+            animation: scan 2s infinite linear;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        #scanner-instructions {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
         }
 
         #close-scanner {
-            margin-top: 20px;
+            margin-top: 30px;
             background-color: #ff3b30;
+            padding: 12px 25px;
+            font-size: 18px;
         }
 
-        #scan-button {
-            background-color: #4CAF50;
+        /* Flash Messages */
+        .message {
+            color: #4CAF50;
+            font-weight: bold;
             margin-top: 10px;
+            text-align: center;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
             }
 
             h1 {
                 font-size: 24px;
             }
 
-            input[type="text"], input[type="number"], input[type="email"], button {
-                font-size: 14px;
-            }
-
-            #scanner-video {
-                width: 95%;
+            #scanner-view {
+                height: 50vh;
             }
         }
     </style>
@@ -180,10 +194,20 @@
             <form method="POST">
                 <input type="text" name="barcode" id="barcode-input" placeholder="Enter Barcode Number" required>
                 <button type="submit" name="search">Search</button>
-                <button type="button" id="scan-button" onclick="startBarcodeScanner()">Scan Barcode</button>
+                <button type="button" id="scan-button" onclick="startBarcodeScanner()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                        <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                        <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                        <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                        <rect x="7" y="8" width="10" height="8" rx="1"></rect>
+                    </svg>
+                    Scan Barcode
+                </button>
             </form>
         </div>
 
+        <!-- Rest of your existing HTML remains the same -->
         <!-- Add Item Section -->
         <div class="right_div">
             <h1>Add New Item</h1>
@@ -243,56 +267,131 @@
 
     <!-- Barcode Scanner Modal -->
     <div id="scanner-container">
-        <video id="scanner-video" playsinline></video>
+        <div id="scanner-view">
+            <video id="scanner-video" playsinline></video>
+            <div id="scanner-overlay">
+                <div id="scanner-frame">
+                    <div id="scanner-line"></div>
+                </div>
+                <p id="scanner-instructions">Align the barcode within the frame</p>
+            </div>
+        </div>
         <button id="close-scanner" onclick="stopBarcodeScanner()">Close Scanner</button>
     </div>
 
+    <!-- Include the QuaggaJS library for barcode scanning -->
+    <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+    
     <script>
-        // Barcode Scanner Functionality
-        let barcodeDetector;
-        let videoStream;
-        
-        // Check if BarcodeDetector API is available
-        if ('BarcodeDetector' in window) {
-            barcodeDetector = new BarcodeDetector();
-        } else {
-            // Load a polyfill or fallback library if needed
-            console.log("BarcodeDetector API not supported, using fallback");
-        }
+        // Scanner state management
+        let isScanning = false;
+        let currentStream = null;
+
+        // Initialize scanner button based on support
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for camera support
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                document.getElementById('scan-button').disabled = true;
+                document.getElementById('scan-button').style.backgroundColor = '#cccccc';
+                document.getElementById('scan-button').innerHTML = 'Scanner not supported';
+            }
+        });
 
         function startBarcodeScanner() {
+            if (isScanning) return;
+            
             const scannerContainer = document.getElementById('scanner-container');
             const videoElement = document.getElementById('scanner-video');
             
             scannerContainer.style.display = 'flex';
+            isScanning = true;
             
-            // Access the device camera
-            navigator.mediaDevices.getUserMedia({ 
-                video: { 
-                    facingMode: 'environment' // Prefer rear camera
-                } 
-            }).then(function(stream) {
-                videoStream = stream;
-                videoElement.srcObject = stream;
-                videoElement.play();
+            // Configure QuaggaJS
+            Quagga.init({
+                inputStream: {
+                    name: "Live",
+                    type: "LiveStream",
+                    target: videoElement,
+                    constraints: {
+                        width: { min: 640 },
+                        height: { min: 480 },
+                        facingMode: "environment", // Use rear camera
+                        aspectRatio: { min: 1, max: 2 }
+                    },
+                },
+                decoder: {
+                    readers: [
+                        "ean_reader",  // EAN-13
+                        "ean_8_reader",
+                        "upc_reader",
+                        "upc_e_reader",
+                        "code_128_reader",
+                        "code_39_reader",
+                        "code_39_vin_reader",
+                        "codabar_reader",
+                        "i2of5_reader"
+                    ],
+                    debug: {
+                        drawBoundingBox: true,
+                        showFrequency: true,
+                        drawScanline: true,
+                        showPattern: true
+                    }
+                },
+                locate: true,
+                frequency: 10
+            }, function(err) {
+                if (err) {
+                    console.error("Error initializing Quagga:", err);
+                    alert("Failed to initialize scanner: " + err.message);
+                    stopBarcodeScanner();
+                    return;
+                }
                 
-                // Start scanning for barcodes
-                scanForBarcodes(videoElement);
-            }).catch(function(err) {
-                console.error("Error accessing camera: ", err);
-                alert("Could not access the camera. Please ensure you have granted camera permissions.");
-                scannerContainer.style.display = 'none';
+                // Start scanning
+                Quagga.start();
+                
+                // Register detection callback
+                Quagga.onDetected(function(result) {
+                    if (result && result.codeResult) {
+                        const code = result.codeResult.code;
+                        document.getElementById('barcode-input').value = code;
+                        
+                        // Visual feedback
+                        const input = document.getElementById('barcode-input');
+                        input.style.backgroundColor = '#e8f5e9';
+                        input.style.transition = 'background-color 0.5s ease';
+                        
+                        setTimeout(() => {
+                            input.style.backgroundColor = '';
+                        }, 1000);
+                        
+                        stopBarcodeScanner();
+                    }
+                });
             });
         }
 
         function stopBarcodeScanner() {
-            const scannerContainer = document.getElementById('scanner-container');
-            const videoElement = document.getElementById('scanner-video');
+            if (!isScanning) return;
             
-            if (videoStream) {
-                videoStream.getTracks().forEach(track => track.stop());
+            isScanning = false;
+            const scannerContainer = document.getElementById('scanner-container');
+            
+            // Stop Quagga
+            if (Quagga) {
+                Quagga.stop();
+                Quagga.offDetected();
             }
             
+            // Stop video stream
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+                currentStream = null;
+            }
+            
+            // Clear video element
+            const videoElement = document.getElementById('scanner-video');
             if (videoElement.srcObject) {
                 videoElement.srcObject = null;
             }
@@ -300,42 +399,12 @@
             scannerContainer.style.display = 'none';
         }
 
-        function scanForBarcodes(videoElement) {
-            if (!barcodeDetector) {
-                alert("Barcode scanning not supported in this browser. Please enter the barcode manually.");
+        // Close scanner when clicking outside
+        document.getElementById('scanner-container').addEventListener('click', function(e) {
+            if (e.target === this) {
                 stopBarcodeScanner();
-                return;
             }
-            
-            function scan() {
-                barcodeDetector.detect(videoElement)
-                    .then(barcodes => {
-                        if (barcodes.length > 0) {
-                            // Found a barcode
-                            const barcode = barcodes[0].rawValue;
-                            document.getElementById('barcode-input').value = barcode;
-                            stopBarcodeScanner();
-                            
-                            // Optionally submit the form automatically
-                            // document.querySelector('form').submit();
-                        } else {
-                            // Continue scanning
-                            requestAnimationFrame(scan);
-                        }
-                    })
-                    .catch(err => {
-                        console.error("Barcode detection error: ", err);
-                        stopBarcodeScanner();
-                    });
-            }
-            
-            scan();
-        }
-
-        // Fallback for browsers without BarcodeDetector
-        function startZXingScanner() {
-            alert("Advanced barcode scanning requires Chrome for Android. Please enter the barcode manually or try with a different browser.");
-        }
+        });
     </script>
 </body>
 </html>
