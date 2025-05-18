@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -19,20 +19,17 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            
         }
 
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 1200px;
-            
         }
 
         h1, h2 {
@@ -64,7 +61,7 @@
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color:rgba(87, 157, 233, 0.78);
+            background-color: rgba(87, 157, 233, 0.78);
             color: white;
             font-size: 16px;
             cursor: pointer;
@@ -72,7 +69,7 @@
         }
 
         button:hover {
-            background-color:rgb(255, 91, 3);
+            background-color: rgb(255, 91, 3);
             transform: scale(1.05);
         }
 
@@ -94,7 +91,7 @@
         }
 
         th {
-            background-color:rgb(255, 0, 0);
+            background-color: rgb(255, 0, 0);
             color: white;
         }
 
@@ -123,6 +120,38 @@
             margin-bottom: 0;
         }
 
+        /* Scanner Styles */
+        #scanner-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #scanner-video {
+            width: 80%;
+            max-width: 500px;
+            border: 3px solid #fff;
+            border-radius: 10px;
+        }
+
+        #close-scanner {
+            margin-top: 20px;
+            background-color: #ff3b30;
+        }
+
+        #scan-button {
+            background-color: #4CAF50;
+            margin-top: 10px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -136,6 +165,10 @@
             input[type="text"], input[type="number"], input[type="email"], button {
                 font-size: 14px;
             }
+
+            #scanner-video {
+                width: 95%;
+            }
         }
     </style>
 </head>
@@ -145,8 +178,9 @@
         <div class="left_div">
             <h1>Search for an Item</h1>
             <form method="POST">
-                <input type="text" name="barcode" placeholder="Enter Barcode Number" required>
+                <input type="text" name="barcode" id="barcode-input" placeholder="Enter Barcode Number" required>
                 <button type="submit" name="search">Search</button>
+                <button type="button" id="scan-button" onclick="startBarcodeScanner()">Scan Barcode</button>
             </form>
         </div>
 
@@ -206,5 +240,102 @@
             </div>
         </div>
     </div>
+
+    <!-- Barcode Scanner Modal -->
+    <div id="scanner-container">
+        <video id="scanner-video" playsinline></video>
+        <button id="close-scanner" onclick="stopBarcodeScanner()">Close Scanner</button>
+    </div>
+
+    <script>
+        // Barcode Scanner Functionality
+        let barcodeDetector;
+        let videoStream;
+        
+        // Check if BarcodeDetector API is available
+        if ('BarcodeDetector' in window) {
+            barcodeDetector = new BarcodeDetector();
+        } else {
+            // Load a polyfill or fallback library if needed
+            console.log("BarcodeDetector API not supported, using fallback");
+        }
+
+        function startBarcodeScanner() {
+            const scannerContainer = document.getElementById('scanner-container');
+            const videoElement = document.getElementById('scanner-video');
+            
+            scannerContainer.style.display = 'flex';
+            
+            // Access the device camera
+            navigator.mediaDevices.getUserMedia({ 
+                video: { 
+                    facingMode: 'environment' // Prefer rear camera
+                } 
+            }).then(function(stream) {
+                videoStream = stream;
+                videoElement.srcObject = stream;
+                videoElement.play();
+                
+                // Start scanning for barcodes
+                scanForBarcodes(videoElement);
+            }).catch(function(err) {
+                console.error("Error accessing camera: ", err);
+                alert("Could not access the camera. Please ensure you have granted camera permissions.");
+                scannerContainer.style.display = 'none';
+            });
+        }
+
+        function stopBarcodeScanner() {
+            const scannerContainer = document.getElementById('scanner-container');
+            const videoElement = document.getElementById('scanner-video');
+            
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+            }
+            
+            if (videoElement.srcObject) {
+                videoElement.srcObject = null;
+            }
+            
+            scannerContainer.style.display = 'none';
+        }
+
+        function scanForBarcodes(videoElement) {
+            if (!barcodeDetector) {
+                alert("Barcode scanning not supported in this browser. Please enter the barcode manually.");
+                stopBarcodeScanner();
+                return;
+            }
+            
+            function scan() {
+                barcodeDetector.detect(videoElement)
+                    .then(barcodes => {
+                        if (barcodes.length > 0) {
+                            // Found a barcode
+                            const barcode = barcodes[0].rawValue;
+                            document.getElementById('barcode-input').value = barcode;
+                            stopBarcodeScanner();
+                            
+                            // Optionally submit the form automatically
+                            // document.querySelector('form').submit();
+                        } else {
+                            // Continue scanning
+                            requestAnimationFrame(scan);
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Barcode detection error: ", err);
+                        stopBarcodeScanner();
+                    });
+            }
+            
+            scan();
+        }
+
+        // Fallback for browsers without BarcodeDetector
+        function startZXingScanner() {
+            alert("Advanced barcode scanning requires Chrome for Android. Please enter the barcode manually or try with a different browser.");
+        }
+    </script>
 </body>
 </html>
